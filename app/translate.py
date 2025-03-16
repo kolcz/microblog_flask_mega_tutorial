@@ -9,7 +9,7 @@ def translate(text, source_language, dest_language):
         return _('Error: the translation service is not configured.')
     auth = {
         'Ocp-Apim-Subscription-Key': current_app.config['MS_TRANSLATOR_KEY'],
-        'Ocp-Apim-Subscription-Region': 'westus'
+        'Ocp-Apim-Subscription-Region': 'switzerlandnorth'
     }
     r = requests.post(
         'https://api.cognitive.microsofttranslator.com'
