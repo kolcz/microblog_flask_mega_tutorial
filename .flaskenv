@@ -1,2 +1,3 @@
 FLASK_APP=microblog.py
 FLASK_DEBUG=1
+LOG_TO_STDOUT=1

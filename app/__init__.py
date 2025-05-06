@@ -9,7 +9,8 @@ from flask_mail import Mail
 from flask_moment import Moment
 from flask_babel import Babel, lazy_gettext as _l
 from config import Config
-from elasticsearch import Elasticsearch
+# from elasticsearch import Elasticsearch
+from opensearchpy import OpenSearch
 
 def get_locale():
     return request.accept_languages.best_match(current_app.config['LANGUAGES'])
@@ -35,8 +36,10 @@ def create_app(config_class=Config):
     mail.init_app(app)
     moment.init_app(app)
     babel.init_app(app, locale_selector=get_locale)
-    app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']]) \
+    app.elasticsearch = OpenSearch([app.config['ELASTICSEARCH_URL']]) \
         if app.config['ELASTICSEARCH_URL'] else None
+    # app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']]) \
+    #     if app.config['ELASTICSEARCH_URL'] else None
 
     from app.errors import bp as errors_bp
     app.register_blueprint(errors_bp)
