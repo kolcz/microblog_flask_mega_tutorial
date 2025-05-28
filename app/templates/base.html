@@ -149,8 +149,8 @@
 
       function set_task_progress(task_id, progress) {
         const progressElement = document.getElementById(task_id + '-progress');
-        if (progressElement){
-          progressElement.innerText = progressl
+        if (progressElement) {
+          progressElement.innerText = progress;
         }
       }
 
@@ -167,8 +167,8 @@
                 break;
               case 'task_progress':
                 set_task_progress(notifications[i].data.task_id,
-                  notifications[i].data.progress);
-                  break;
+                    notifications[i].data.progress);
+                break;
             }
             since = notifications[i].timestamp;
           }

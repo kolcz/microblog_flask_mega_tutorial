@@ -45,7 +45,7 @@ def create_app(config_class=Config):
         if app.config['ELASTICSEARCH_URL'] else None
     
     app.redis = Redis.from_url(app.config['REDIS_URL'])
-    app.task_queue = rq.Queue('microblog_tasks', connection=app.redis)
+    app.task_queue = rq.Queue('microblog-tasks', connection=app.redis)
 
     from app.errors import bp as errors_bp
     app.register_blueprint(errors_bp)
